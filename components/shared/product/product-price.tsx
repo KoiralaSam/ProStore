@@ -4,7 +4,7 @@ const ProductPrice = ({
   className,
 }: {
   value: number;
-  className?: String;
+  className?: string;
 }) => {
   const StringValue = value.toFixed(2);
 
