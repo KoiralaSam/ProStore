@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import ModeToggle from "./mode-toggle";
 import Link from "next/link";
-import { Menu as MenuIcon, ShoppingCart, UserIcon, X } from "lucide-react";
+import { Menu as MenuIcon, ShoppingCart, UserIcon } from "lucide-react";
 import {
   Sheet,
   SheetContent,
