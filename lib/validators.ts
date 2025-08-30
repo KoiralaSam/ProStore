@@ -1,4 +1,4 @@
-import { regex, z } from "zod";
+import { z } from "zod";
 import { formatNumbersWithDecimal } from "./utils";
 
 const currency = z
