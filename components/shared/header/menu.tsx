@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import ModeToggle from "./mode-toggle";
 import Link from "next/link";
 import { Menu as MenuIcon, ShoppingCart, UserIcon } from "lucide-react";
+import UserButton from "./user-button";
+
 import {
   Sheet,
   SheetContent,
@@ -23,12 +25,7 @@ const Menu = () => {
             Cart
           </Link>
         </Button>
-        <Button asChild>
-          <Link href="/sign-in">
-            <UserIcon className="w-4 h-4 mr-2" />
-            Sign In
-          </Link>
-        </Button>
+        <UserButton />
       </nav>
       <nav className="md:hidden">
         <Sheet>
@@ -57,25 +54,7 @@ const Menu = () => {
                 <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
                   Account
                 </h3>
-                <SheetClose asChild>
-                  <Button
-                    asChild
-                    variant="ghost"
-                    className="w-full justify-start h-12 text-left"
-                  >
-                    <Link href="/sign-in" className="flex items-center gap-3">
-                      <div className="p-2 rounded-md bg-primary/10">
-                        <UserIcon className="w-4 h-4 text-primary" />
-                      </div>
-                      <div>
-                        <div className="font-medium">Sign In</div>
-                        <div className="text-xs text-muted-foreground">
-                          Access your account
-                        </div>
-                      </div>
-                    </Link>
-                  </Button>
-                </SheetClose>
+                <UserButton />
               </div>
 
               <div className="space-y-3">
