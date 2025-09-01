@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import ModeToggle from "./mode-toggle";
 import Link from "next/link";
-import { Menu as MenuIcon, ShoppingCart, UserIcon } from "lucide-react";
+import { Menu as MenuIcon, ShoppingCart } from "lucide-react";
 import UserButton from "./user-button";
 
 import {
@@ -55,6 +55,7 @@ const Menu = () => {
                   Account
                 </h3>
                 <UserButton />
+                <SheetClose asChild></SheetClose>
               </div>
 
               <div className="space-y-3">
