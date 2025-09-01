@@ -4,6 +4,7 @@ import { prisma } from "@/db/prisma";
 import credentialProvider from "next-auth/providers/credentials";
 import { compareSync } from "bcrypt-ts-edge";
 import type { NextAuthConfig } from "next-auth";
+import { use } from "react";
 
 export const config = {
   pages: {
@@ -58,6 +59,10 @@ export const config = {
     async session({ session, user, trigger, token }: any) {
       //set the user id from token
       session.user.id = token.sub;
+      session.user.role = token.role;
+      session.user.name = token.name;
+
+      console.log(token);
 
       //if there is an update, set the user name
       if (trigger == "update") {
@@ -65,6 +70,25 @@ export const config = {
       }
 
       return session;
+    },
+    async jwt({ token, user, trigger, session }: any) {
+      //Assign user fields to token
+      if (user) {
+        token.role = user.role;
+        //if user has no name
+        if (user.name === "") {
+          token.name = user.email!.split("@")[0];
+        }
+
+        //update database to reflect token name
+        await prisma.user.update({
+          where: { id: user.id },
+          data: { name: token.name },
+        });
+      }
+
+      // Return the token object
+      return token;
     },
   },
 } satisfies NextAuthConfig;
